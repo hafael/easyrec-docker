@@ -46,10 +46,30 @@ Container based on [![Docker Hub; nimmis/mariadb](https://img.shields.io/badge/d
 
 To run the lastest stable version of this docker image run
 
-	docker run -d vetdeit/easyrec-docker
+	docker run -d verdeit/easyrec-docker
 
 To expose the web server and database to the external interface run
 
-	docker run -d -p 8080:8080 -p 3306:3306 vetdeit/easyrec-docker
+	docker run -d -p 3306:3306 -p 8080:8080 --name easyrec verdeit/easyrec-docker
+  docker exec -d easyrec /etc/init.d/tomcat.sh start
 
+After tomcat startup, go to apache home
 
+  http://localhost:8080
+
+Easyrec path
+
+  http://localhost:8080/easyrec-web/
+
+### Installing Easyrec
+
+Mysql user data:
+
+  Database Host : localhost
+  Database Name : easyrec
+  User Name : easyrecuser
+  Password : admin
+
+Check MySQL improvements and initialize database. This process can last between 1,5 to 3 minutes.
+Rest API is checked by default. Check if is development environment or/and continue. Wait for database migrations.
+Next, create the admin user account. whala! If u are in easyrec dashboard, that`s all be ok.
